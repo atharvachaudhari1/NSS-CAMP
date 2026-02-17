@@ -1,0 +1,421 @@
+/* ════════════════════════════════════════
+   NSS Special Camp 2026 – Mobile-First CSS
+   ════════════════════════════════════════ */
+
+:root {
+  --primary: #b30000;
+  --primary-dark: #8a0000;
+  --accent: #002147;
+  --white: #ffffff;
+  --offwhite: #f8f8f8;
+  --gray-light: #e8e8e8;
+  --gray-text: #555;
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 8px 28px rgba(0, 0, 0, 0.14);
+  --radius: 14px;
+  --transition: 0.4s ease-in-out;
+}
+
+/* ─── Reset ─── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--white);
+  color: #222;
+  max-width: 480px;
+  margin: 0 auto;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ════════════════════════════════════════
+   HERO SECTION
+   ════════════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at top, rgba(179, 0, 0, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(0, 33, 71, 0.08) 0%, transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #f0f0f5 100%);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 48px 24px 56px;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.hero-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 24px;
+  object-fit: cover;
+  box-shadow: 0 6px 24px rgba(179, 0, 0, 0.2);
+  border: 3px solid var(--white);
+}
+
+.hero-title {
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--accent);
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.hero-title span {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--primary), #d94040);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.hero-dates {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--gray-text);
+  margin-bottom: 32px;
+  letter-spacing: 0.3px;
+}
+
+/* ─── Countdown ─── */
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.countdown-block {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 14px 6px 10px;
+  min-width: 68px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.countdown-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  display: inline-block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  will-change: transform, opacity;
+}
+
+.countdown-value.tick {
+  animation: tickPop 0.4s ease;
+}
+
+.countdown-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+/* ════════════════════════════════════════
+   SECTIONS
+   ════════════════════════════════════════ */
+.section {
+  padding: 48px 20px;
+}
+
+.section-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), #d94040);
+  border-radius: 2px;
+  margin: 10px auto 0;
+}
+
+/* ════════════════════════════════════════
+   TIMELINE
+   ════════════════════════════════════════ */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+/* Vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 22px;
+  top: 8px;
+  bottom: 8px;
+  width: 3px;
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+  border-radius: 2px;
+  opacity: 0.2;
+}
+
+.timeline-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 18px 16px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-light);
+  transition: transform var(--transition), box-shadow var(--transition);
+  will-change: transform;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-card:active {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.timeline-day {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--primary), #d94040);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.1;
+  box-shadow: 0 3px 10px rgba(179, 0, 0, 0.25);
+}
+
+.timeline-info h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.timeline-info p {
+  font-size: 13px;
+  color: var(--gray-text);
+  line-height: 1.5;
+}
+
+/* ════════════════════════════════════════
+   DOCUMENTS
+   ════════════════════════════════════════ */
+.docs-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.doc-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--gray-light);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent);
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+  will-change: transform;
+}
+
+.doc-btn:active {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+  background: #fafafa;
+}
+
+.doc-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+/* ════════════════════════════════════════
+   SOCIAL / CONNECT
+   ════════════════════════════════════════ */
+.social-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.social-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px 20px;
+  border-radius: var(--radius);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  transition: transform var(--transition), box-shadow var(--transition);
+  will-change: transform;
+}
+
+.social-btn:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+.social-btn.instagram {
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  box-shadow: 0 4px 16px rgba(220, 39, 67, 0.3);
+}
+
+.social-btn.whatsapp {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════
+   FOOTER
+   ════════════════════════════════════════ */
+.footer {
+  text-align: center;
+  padding: 32px 20px 40px;
+  background: var(--offwhite);
+  border-top: 1px solid var(--gray-light);
+}
+
+.footer p {
+  font-size: 12px;
+  color: var(--gray-text);
+  font-weight: 500;
+}
+
+.footer-heart {
+  margin-top: 6px;
+  font-size: 11px !important;
+  opacity: 0.7;
+}
+
+/* ════════════════════════════════════════
+   SCROLL-REVEAL
+   ════════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ════════════════════════════════════════
+   ANIMATIONS
+   ════════════════════════════════════════ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tickPop {
+  0%   { transform: scale(1); opacity: 1; }
+  30%  { transform: scale(1.15); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ════════════════════════════════════════
+   MEDIA – Slightly larger phones
+   ════════════════════════════════════════ */
+@media (min-width: 400px) {
+  .countdown-block {
+    min-width: 76px;
+    padding: 16px 8px 12px;
+  }
+  .countdown-value {
+    font-size: 32px;
+  }
+  .hero-title {
+    font-size: 32px;
+  }
+  .hero-title span {
+    font-size: 40px;
+  }
+}
+
+/* ─── Reduce motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

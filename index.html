@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="description"
+        content="NSS Special Camp 2026 — 15 March to 21 March. Join the NSS CRCE Council for a week of service, skill-building, and cultural celebration." />
+    <meta name="theme-color" content="#0a0a0f" />
+    <title>NSS Special Camp 2026 | CRCE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /* ═══════════════════════════════════════════
+   VARIABLES & RESET
+   ═══════════════════════════════════════════ */
+        :root {
+            --primary: #b30000;
+            --primary-glow: rgba(179, 0, 0, 0.6);
+            --primary-soft: rgba(179, 0, 0, 0.15);
+            --neon-red: #ff2d2d;
+            --neon-orange: #ff6a00;
+            --accent: #002147;
+            --bg-deep: #0a0a0f;
+            --bg-mid: #12101a;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --bg-card-hover: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-border-hover: rgba(255, 255, 255, 0.15);
+            --text: #eee;
+            --text-dim: rgba(255, 255, 255, 0.55);
+            --text-bright: #fff;
+            --radius: 16px;
+            --transition: 0.4s ease-in-out;
+        }
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-deep);
+            color: var(--text);
+            max-width: 480px;
+            margin: 0 auto;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ═══════════════════════════════════════════
+   LOADING SCREEN
+   ═══════════════════════════════════════════ */
+        .loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: var(--bg-deep);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader-logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            animation: loaderPulse 1.4s ease-in-out infinite;
+            box-shadow: 0 0 40px var(--primary-glow), 0 0 80px rgba(179, 0, 0, 0.25);
+        }
+
+        .loader-text {
+            margin-top: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            animation: loaderFade 1.4s ease-in-out infinite;
+        }
+
+        @keyframes loaderPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 40px var(--primary-glow);
+            }
+
+            50% {
+                transform: scale(1.08);
+                box-shadow: 0 0 60px var(--primary-glow), 0 0 100px rgba(179, 0, 0, 0.2);
+            }
+        }
+
+        @keyframes loaderFade {
+
+            0%,
+            100% {
+                opacity: 0.4;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+   FLOATING PARTICLES
+   ═══════════════════════════════════════════ */
+        .particles {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+            opacity: 0;
+            animation: floatParticle linear infinite;
+            will-change: transform, opacity;
+        }
+
+        .particle:nth-child(1) {
+            width: 6px;
+            height: 6px;
+            left: 10%;
+            top: 20%;
+            animation-duration: 18s;
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(2) {
+            width: 4px;
+            height: 4px;
+            left: 80%;
+            top: 10%;
+            animation-duration: 22s;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(3) {
+            width: 8px;
+            height: 8px;
+            left: 25%;
+            top: 60%;
+            animation-duration: 20s;
+            animation-delay: 4s;
+        }
+
+        .particle:nth-child(4) {
+            width: 5px;
+            height: 5px;
+            left: 70%;
+            top: 40%;
+            animation-duration: 16s;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(5) {
+            width: 3px;
+            height: 3px;
+            left: 50%;
+            top: 80%;
+            animation-duration: 24s;
+            animation-delay: 3s;
+        }
+
+        .particle:nth-child(6) {
+            width: 7px;
+            height: 7px;
+            left: 90%;
+            top: 55%;
+            animation-duration: 19s;
+            animation-delay: 5s;
+        }
+
+        .particle:nth-child(7) {
+            width: 4px;
+            height: 4px;
+            left: 15%;
+            top: 90%;
+            animation-duration: 21s;
+            animation-delay: 6s;
+        }
+
+        .particle:nth-child(8) {
+            width: 6px;
+            height: 6px;
+            left: 60%;
+            top: 70%;
+            animation-duration: 17s;
+            animation-delay: 2s;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translateY(-200px) translateX(40px);
+                opacity: 0.3;
+            }
+
+            90% {
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: translateY(-400px) translateX(-20px);
+                opacity: 0;
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+   MARQUEE BAR
+   ═══════════════════════════════════════════ */
+        .marquee-bar {
+            background: linear-gradient(90deg, var(--primary), #d42020, var(--primary));
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 10px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .marquee-inner {
+            display: inline-block;
+            animation: marqueeScroll 18s linear infinite;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-bright);
+        }
+
+        .marquee-inner span {
+            padding: 0 60px;
+        }
+
+        @keyframes marqueeScroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+   HERO SECTION
+   ═══════════════════════════════════════════ */
+        .hero {
+            position: relative;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 50% 20%, rgba(179, 0, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 30% 80%, rgba(0, 33, 71, 0.1) 0%, transparent 50%),
+                linear-gradient(180deg, #0a0a0f 0%, #1a0010 50%, #0d0d15 100%);
+            z-index: 0;
+        }
+
+        /* Animated mesh grid */
+        .hero-mesh {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            opacity: 0.04;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: meshDrift 20s linear infinite;
+            will-change: transform;
+        }
+
+        @keyframes meshDrift {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(40px, 40px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 60px 24px 56px;
+            animation: heroFadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Logo with neon ring */
+        .logo-wrap {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 28px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-ring {
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            background: conic-gradient(from 0deg, var(--primary), var(--neon-red), var(--neon-orange), var(--primary)) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: ringRotate 4s linear infinite;
+            will-change: transform;
+        }
+
+        .logo-glow {
+            position: absolute;
+            inset: -16px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary-glow), transparent 70%);
+            animation: glowPulse 2.5s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes ringRotate {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.9;
+                transform: scale(1.1);
+            }
+        }
+
+        .hero-logo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 28px;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--text-bright);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title span {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--neon-red), var(--neon-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 38px;
+            font-weight: 900;
+            filter: drop-shadow(0 0 12px rgba(255, 45, 45, 0.4));
+        }
+
+        .hero-dates {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dim);
+            margin-bottom: 36px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ─── FLIP COUNTDOWN ─── */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .countdown-block {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            padding: 14px 4px 10px;
+            min-width: 66px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        /* Centre divider line */
+        .countdown-block::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            right: 6px;
+            top: 50%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .countdown-value {
+            font-size: 30px;
+            font-weight: 900;
+            line-height: 1;
+            color: var(--neon-red);
+            text-shadow: 0 0 16px var(--primary-glow);
+            display: inline-block;
+            perspective: 400px;
+            transition: transform 0.1s;
+        }
+
+        .countdown-value.flip {
+            animation: flipDigit 0.5s ease;
+        }
+
+        @keyframes flipDigit {
+            0% {
+                transform: perspective(400px) rotateX(0);
+            }
+
+            30% {
+                transform: perspective(400px) rotateX(-90deg);
+                opacity: 0.4;
+            }
+
+            60% {
+                transform: perspective(400px) rotateX(30deg);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: perspective(400px) rotateX(0);
+                opacity: 1;
+            }
+        }
+
+        .countdown-label {
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--text-dim);
+        }
+
+        /* ═══════════════════════════════════════════
+   SECTION SHARED
+   ═══════════════════════════════════════════ */
+        .section {
+            padding: 52px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-bright);
+            text-align: center;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-red), var(--neon-orange));
+            border-radius: 2px;
+            margin: 12px auto 0;
+            box-shadow: 0 0 10px rgba(255, 45, 45, 0.4);
+        }
+
+        /* ═══════════════════════════════════════════
+   TIMELINE
+   ═══════════════════════════════════════════ */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            position: relative;
+            padding-left: 32px;
+        }
+
+        /* Animated vertical line */
+        .timeline-line {
+            position: absolute;
+            left: 10px;
+            top: 0;
+            width: 3px;
+            height: 0%;
+            background: linear-gradient(180deg, var(--neon-red), var(--primary), var(--neon-orange));
+            border-radius: 2px;
+            transition: height 1.5s ease-out;
+            box-shadow: 0 0 8px var(--primary-glow);
+        }
+
+        /* Dot on the line */
+        .timeline-card {
+            position: relative;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            padding: 22px 18px 22px 22px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+            will-change: transform;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 600px;
+        }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 26px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--neon-red);
+            box-shadow: 0 0 10px var(--primary-glow);
+            z-index: 3;
+        }
+
+        /* Day watermark */
+        .timeline-card::after {
+            content: attr(data-day);
+            position: absolute;
+            right: 10px;
+            bottom: 4px;
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1;
+            color: rgba(179, 0, 0, 0.06);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .timeline-card:active {
+            transform: translateY(-3px) rotateX(2deg);
+            box-shadow: 0 8px 30px rgba(179, 0, 0, 0.2);
+            border-color: var(--glass-border-hover);
+        }
+
+        .timeline-day-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), #d42020);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 10px rgba(179, 0, 0, 0.3);
+        }
+
+        .timeline-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--text-bright);
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-card p {
+            font-size: 13px;
+            color: var(--text-dim);
+            line-height: 1.55;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px) translateZ(-30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+            will-change: opacity, transform;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0) translateZ(0);
+        }
+
+        .reveal:nth-child(2) {
+            transition-delay: 0.05s;
+        }
+
+        .reveal:nth-child(3) {
+            transition-delay: 0.1s;
+        }
+
+        .reveal:nth-child(4) {
+            transition-delay: 0.15s;
+        }
+
+        .reveal:nth-child(5) {
+            transition-delay: 0.2s;
+        }
+
+        .reveal:nth-child(6) {
+            transition-delay: 0.25s;
+        }
+
+        .reveal:nth-child(7) {
+            transition-delay: 0.3s;
+        }
+
+        /* ═══════════════════════════════════════════
+   DOCUMENTS
+   ═══════════════════════════════════════════ */
+        .docs-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .doc-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 18px 20px;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+            will-change: transform;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .doc-card:active {
+            transform: translateY(-2px) scale(0.98);
+            box-shadow: 0 6px 24px rgba(179, 0, 0, 0.15);
+            border-color: var(--glass-border-hover);
+        }
+
+        /* Shimmer sweep effect */
+        .doc-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+            animation: shimmerSweep 3s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        @keyframes shimmerSweep {
+            0% {
+                left: -100%;
+            }
+
+            50% {
+                left: 150%;
+            }
+
+            100% {
+                left: 150%;
+            }
+        }
+
+        .doc-icon-wrap {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-soft), rgba(179, 0, 0, 0.08));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .doc-icon-wrap svg {
+            width: 22px;
+            height: 22px;
+            color: var(--neon-red);
+            filter: drop-shadow(0 0 4px rgba(255, 45, 45, 0.4));
+        }
+
+        .doc-info {
+            flex: 1;
+        }
+
+        .doc-info span {
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-bright);
+        }
+
+        .doc-info small {
+            font-size: 11px;
+            color: var(--text-dim);
+        }
+
+        .doc-dl-icon {
+            flex-shrink: 0;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 12px rgba(179, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .doc-card:active .doc-dl-icon {
+            transform: scale(0.9);
+        }
+
+        .doc-dl-icon svg {
+            width: 16px;
+            height: 16px;
+            color: #fff;
+        }
+
+        /* ═══════════════════════════════════════════
+   SOCIAL / CONNECT
+   ═══════════════════════════════════════════ */
+        .social-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .social-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 20px;
+            border-radius: var(--radius);
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-bright);
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--transition), box-shadow var(--transition);
+            will-change: transform;
+        }
+
+        .social-card:active {
+            transform: translateY(-2px) scale(0.97);
+        }
+
+        .social-card svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        /* Instagram – rotating conic gradient border */
+        .social-card.instagram {
+            background: rgba(255, 255, 255, 0.04);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            isolation: isolate;
+        }
+
+        .social-card.instagram::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            padding: 2px;
+            background: conic-gradient(from 0deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888, #f09433);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: borderRotate 3s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes borderRotate {
+            to {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        /* WhatsApp – pulsing glow */
+        .social-card.whatsapp {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.15), rgba(18, 140, 126, 0.1));
+            border: 1px solid rgba(37, 211, 102, 0.25);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.15);
+            animation: whatsappGlow 2.5s ease-in-out infinite;
+        }
+
+        @keyframes whatsappGlow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(37, 211, 102, 0.15);
+            }
+
+            50% {
+                box-shadow: 0 0 35px rgba(37, 211, 102, 0.3);
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════ */
+        .footer {
+            position: relative;
+            text-align: center;
+            padding: 36px 20px 100px;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        .footer-divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-red), transparent);
+            margin: 0 auto 20px;
+            box-shadow: 0 0 10px rgba(255, 45, 45, 0.3);
+        }
+
+        .footer p {
+            font-size: 12px;
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+
+        .footer-heart {
+            margin-top: 8px;
+            font-size: 11px !important;
+            opacity: 0.6;
+        }
+
+        /* ═══════════════════════════════════════════
+   STICKY WHATSAPP FAB
+   ═══════════════════════════════════════════ */
+        .whatsapp-fab {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            animation: fabBounce 2.5s ease-in-out infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-fab:active {
+            transform: scale(0.9);
+            animation: none;
+        }
+
+        .whatsapp-fab svg {
+            width: 28px;
+            height: 28px;
+            color: #fff;
+        }
+
+        @keyframes fabBounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        /* ═══════════════════════════════════════════
+   RIPPLE EFFECT
+   ═══════════════════════════════════════════ */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(0);
+            animation: rippleOut 0.6s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes rippleOut {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* ─── 3D Tilt on cards via JS ─── */
+        .tilt-active {
+            transition: transform 0.1s ease-out !important;
+        }
+
+        /* ═══════════════════════════════════════════
+   MEDIA QUERIES
+   ═══════════════════════════════════════════ */
+        @media (min-width: 400px) {
+            .countdown-block {
+                min-width: 72px;
+                padding: 16px 6px 12px;
+            }
+
+            .countdown-value {
+                font-size: 34px;
+            }
+
+            .hero-title {
+                font-size: 30px;
+            }
+
+            .hero-title span {
+                font-size: 42px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════ LOADER ═══════ -->
+    <div class="loader" id="loader">
+        <img src="assets/nss.jpg" alt="NSS Logo" class="loader-logo" />
+        <div class="loader-text">Loading Camp</div>
+    </div>
+
+    <!-- ═══════ PARTICLES ═══════ -->
+    <div class="particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- ═══════ MARQUEE ═══════ -->
+    <div class="marquee-bar" id="marquee">
+        <div class="marquee-inner">
+            <span>🏕️ Camp Starts: 15 March 2026 · Register Now!</span>
+            <span>🏕️ Camp Starts: 15 March 2026 · Register Now!</span>
+            <span>🏕️ Camp Starts: 15 March 2026 · Register Now!</span>
+            <span>🏕️ Camp Starts: 15 March 2026 · Register Now!</span>
+        </div>
+    </div>
+
+    <!-- ═══════ HERO ═══════ -->
+    <section id="hero" class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-mesh"></div>
+        <div class="hero-content">
+
+            <div class="logo-wrap">
+                <div class="logo-glow"></div>
+                <div class="logo-ring"></div>
+                <img src="assets/nss.jpg" alt="NSS Logo" class="hero-logo" />
+            </div>
+
+            <h1 class="hero-title">NSS Special Camp<br /><span>2026</span></h1>
+            <p class="hero-dates">15 March – 21 March 2026</p>
+
+            <div class="countdown" id="countdown">
+                <div class="countdown-block">
+                    <span class="countdown-value" id="cd-days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-block">
+                    <span class="countdown-value" id="cd-hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-block">
+                    <span class="countdown-value" id="cd-minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-block">
+                    <span class="countdown-value" id="cd-seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ TIMELINE ═══════ -->
+    <section id="timeline" class="section">
+        <h2 class="section-title">Camp Timeline</h2>
+        <div class="timeline">
+            <div class="timeline-line" id="timeline-line"></div>
+
+            <div class="timeline-card reveal" data-day="1">
+                <span class="timeline-day-badge">Day 1</span>
+                <h3>Orientation</h3>
+                <p>Ice-breaking activities, team assignments, and introduction to the camp objectives.</p>
+            </div>
+            <div class="timeline-card reveal" data-day="2">
+                <span class="timeline-day-badge">Day 2</span>
+                <h3>Village Survey</h3>
+                <p>On-ground village survey to understand local needs, resources, and community demographics.</p>
+            </div>
+            <div class="timeline-card reveal" data-day="3">
+                <span class="timeline-day-badge">Day 3</span>
+                <h3>Health Awareness</h3>
+                <p>Medical check-up drives, health &amp; hygiene awareness sessions for the community.</p>
+            </div>
+            <div class="timeline-card reveal" data-day="4">
+                <span class="timeline-day-badge">Day 4</span>
+                <h3>Skill Workshop</h3>
+                <p>Hands-on workshops on practical skills — cooking, crafts, first aid, and more.</p>
+            </div>
+            <div class="timeline-card reveal" data-day="5">
+                <span class="timeline-day-badge">Day 5</span>
+                <h3>Tree Plantation</h3>
+                <p>Environmental initiative with large-scale tree plantation and eco-awareness activities.</p>
+            </div>
+            <div class="timeline-card reveal" data-day="6">
+                <span class="timeline-day-badge">Day 6</span>
+                <h3>Cultural Preparation</h3>
+                <p>Rehearsals and preparation for the closing ceremony — skits, songs, and performances.</p>
+            </div>
+            <div class="timeline-card reveal" data-day="7">
+                <span class="timeline-day-badge">Day 7</span>
+                <h3>Closing Ceremony</h3>
+                <p>Grand cultural programme, felicitation, reflections, and farewell to the camp village.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════ DOCUMENTS ═══════ -->
+    <section id="documents" class="section">
+        <h2 class="section-title">Important Documents</h2>
+        <div class="docs-grid">
+
+            <a href="assets/rulebook.pdf" download class="doc-card reveal">
+                <div class="doc-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+                    </svg>
+                </div>
+                <div class="doc-info"><span>Rule Book</span><small>PDF Document</small></div>
+                <div class="doc-dl-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <polyline points="19 12 12 19 5 12" />
+                    </svg>
+                </div>
+            </a>
+
+            <a href="assets/packinglist.pdf" download class="doc-card reveal">
+                <div class="doc-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2" />
+                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+                    </svg>
+                </div>
+                <div class="doc-info"><span>Packing List</span><small>PDF Document</small></div>
+                <div class="doc-dl-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <polyline points="19 12 12 19 5 12" />
+                    </svg>
+                </div>
+            </a>
+
+            <a href="assets/consent.pdf" download class="doc-card reveal">
+                <div class="doc-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                    </svg>
+                </div>
+                <div class="doc-info"><span>Consent Form</span><small>PDF Document</small></div>
+                <div class="doc-dl-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <polyline points="19 12 12 19 5 12" />
+                    </svg>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- ═══════ CONNECT ═══════ -->
+    <section id="connect" class="section">
+        <h2 class="section-title">Connect With Us</h2>
+        <div class="social-grid">
+
+            <a href="https://www.instagram.com/nss.crce/" target="_blank" rel="noopener"
+                class="social-card instagram reveal" id="ig-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                </svg>
+                <span>Instagram</span>
+            </a>
+
+            <a href="https://wa.me/9820251507" target="_blank" rel="noopener" class="social-card whatsapp reveal"
+                id="wa-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                <span>WhatsApp</span>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer class="footer">
+        <div class="footer-divider"></div>
+        <p>NSS CRCE Council 2026 &copy; All Rights Reserved</p>
+        <p class="footer-heart">Made with ❤️ for NSS Volunteers</p>
+    </footer>
+
+    <!-- ═══════ STICKY WHATSAPP FAB ═══════ -->
+    <a href="https://wa.me/9820251507" target="_blank" rel="noopener" class="whatsapp-fab"
+        aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+    </a>
+
+    <script>
+        (function () {
+            'use strict';
+
+            /* ═══════ LOADING SCREEN ═══════ */
+            window.addEventListener('load', function () {
+                setTimeout(function () {
+                    document.getElementById('loader').classList.add('hidden');
+                }, 1600);
+            });
+
+            /* ═══════ COUNTDOWN – FLIP STYLE ═══════ */
+            var TARGET = new Date('2026-03-15T00:00:00+05:30').getTime();
+            var $d = document.getElementById('cd-days');
+            var $h = document.getElementById('cd-hours');
+            var $m = document.getElementById('cd-minutes');
+            var $s = document.getElementById('cd-seconds');
+
+            function pad(n) { return String(n).padStart(2, '0'); }
+
+            function setVal(el, v) {
+                var f = pad(v);
+                if (el.textContent !== f) {
+                    el.textContent = f;
+                    el.classList.remove('flip');
+                    void el.offsetWidth;         // reflow
+                    el.classList.add('flip');
+                }
+            }
+
+            function tick() {
+                var diff = TARGET - Date.now();
+                if (diff <= 0) { setVal($d, 0); setVal($h, 0); setVal($m, 0); setVal($s, 0); return; }
+                setVal($d, Math.floor(diff / 86400000));
+                setVal($h, Math.floor((diff / 3600000) % 24));
+                setVal($m, Math.floor((diff / 60000) % 60));
+                setVal($s, Math.floor((diff / 1000) % 60));
+            }
+            tick();
+            setInterval(tick, 1000);
+
+            /* ═══════ SCROLL REVEAL (IntersectionObserver) ═══════ */
+            var revealEls = document.querySelectorAll('.reveal');
+
+            if ('IntersectionObserver' in window) {
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (e) {
+                        if (e.isIntersecting) {
+                            e.target.classList.add('visible');
+                            io.unobserve(e.target);
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                revealEls.forEach(function (el) { io.observe(el); });
+            } else {
+                // fallback
+                revealEls.forEach(function (el) { el.classList.add('visible'); });
+            }
+
+            /* ═══════ TIMELINE LINE HEIGHT ═══════ */
+            var tlLine = document.getElementById('timeline-line');
+            var tlSection = document.getElementById('timeline');
+
+            function updateLine() {
+                if (!tlSection || !tlLine) return;
+                var rect = tlSection.getBoundingClientRect();
+                var winH = window.innerHeight;
+                if (rect.top >= winH) { tlLine.style.height = '0%'; return; }
+                if (rect.bottom <= 0) { tlLine.style.height = '100%'; return; }
+                var progress = (winH - rect.top) / (rect.height + winH);
+                tlLine.style.height = Math.min(progress * 130, 100) + '%';
+            }
+            window.addEventListener('scroll', updateLine, { passive: true });
+            updateLine();
+
+            /* ═══════ 3D TILT ON CARDS ═══════ */
+            var cards = document.querySelectorAll('.timeline-card, .doc-card');
+
+            cards.forEach(function (card) {
+                card.addEventListener('touchstart', function (e) {
+                    var t = e.touches[0];
+                    var r = card.getBoundingClientRect();
+                    var x = ((t.clientX - r.left) / r.width - 0.5) * 12;
+                    var y = ((t.clientY - r.top) / r.height - 0.5) * -12;
+                    card.style.transform = 'perspective(600px) rotateY(' + x + 'deg) rotateX(' + y + 'deg) scale(1.02)';
+                    card.classList.add('tilt-active');
+                }, { passive: true });
+
+                card.addEventListener('touchend', function () {
+                    card.style.transform = '';
+                    card.classList.remove('tilt-active');
+                }, { passive: true });
+
+                // mouse hover for desktop preview
+                card.addEventListener('mousemove', function (e) {
+                    var r = card.getBoundingClientRect();
+                    var x = ((e.clientX - r.left) / r.width - 0.5) * 10;
+                    var y = ((e.clientY - r.top) / r.height - 0.5) * -10;
+                    card.style.transform = 'perspective(600px) rotateY(' + x + 'deg) rotateX(' + y + 'deg) scale(1.02)';
+                    card.classList.add('tilt-active');
+                });
+
+                card.addEventListener('mouseleave', function () {
+                    card.style.transform = '';
+                    card.classList.remove('tilt-active');
+                });
+            });
+
+            /* ═══════ RIPPLE EFFECT ═══════ */
+            var rippleTargets = document.querySelectorAll('.doc-card, .social-card');
+
+            rippleTargets.forEach(function (el) {
+                el.style.position = 'relative';
+                el.style.overflow = 'hidden';
+
+                el.addEventListener('click', function (e) {
+                    var rect = el.getBoundingClientRect();
+                    var size = Math.max(rect.width, rect.height);
+                    var ripple = document.createElement('span');
+                    ripple.className = 'ripple';
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+                    ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+                    el.appendChild(ripple);
+                    setTimeout(function () { ripple.remove(); }, 600);
+                });
+            });
+
+        })();
+    </script>
+</body>
+
+</html>
