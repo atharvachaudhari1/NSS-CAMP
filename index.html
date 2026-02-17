@@ -110,6 +110,33 @@
             animation: loaderReveal 1s ease-out 0.3s both;
             z-index: 2;
             position: relative;
+            animation: loaderReveal 1s ease-out 0.3s both, heartBeat 1.2s ease-in-out infinite 1s;
+        }
+
+        @keyframes heartBeat {
+            0% {
+                transform: scale(1);
+            }
+
+            15% {
+                transform: scale(1.06);
+            }
+
+            30% {
+                transform: scale(1);
+            }
+
+            45% {
+                transform: scale(1.06);
+            }
+
+            60% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         @keyframes loaderReveal {
@@ -167,6 +194,31 @@
             border-right: 2px solid var(--green-light);
             width: 0;
             animation: typeOut 1.2s steps(8) 0.8s forwards, blinkCaret 0.6s step-end infinite;
+        }
+
+        /* Motto fade-in */
+        .loader-motto {
+            margin-top: 8px;
+            font-size: 13px;
+            font-style: italic;
+            color: var(--text-dim);
+            opacity: 0;
+            animation: fadeInMotto 0.6s ease-out 2s forwards;
+        }
+
+        @keyframes fadeInMotto {
+            to {
+                opacity: 0.8;
+            }
+        }
+
+        /* Percentage counter */
+        .loader-pct {
+            margin-top: 16px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--green-light);
+            font-family: monospace;
         }
 
         @keyframes typeOut {
@@ -309,12 +361,16 @@
    MARQUEE
    ═══════════════════════════════════════════ */
         .marquee-bar {
-            background: linear-gradient(90deg, var(--green), var(--green-light), var(--green));
+            background: var(--green);
             overflow: hidden;
             white-space: nowrap;
             padding: 10px 0;
-            position: relative;
-            z-index: 10;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .marquee-inner {
@@ -351,6 +407,8 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            padding-top: 40px;
+            /* Offset for marquee */
         }
 
         .hero-bg {
@@ -759,7 +817,7 @@
             width: 60%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-            animation: shimmer 3s ease-in-out infinite;
+            animation: shimmer 2s ease-in-out infinite;
             will-change: transform;
         }
 
@@ -961,46 +1019,31 @@
         }
 
         /* ═══════════════════════════════════════════
-   WHATSAPP FAB
+   DOCS CHECKMARK
    ═══════════════════════════════════════════ */
-        .whatsapp-fab {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            z-index: 100;
-            animation: fabBounce 2.5s ease-in-out infinite;
-            transition: transform 0.3s ease;
+        .doc-dl-icon.checked {
+            background: var(--green-light);
+            transform: scale(1.1);
         }
 
-        .whatsapp-fab:active {
-            transform: scale(0.9);
-            animation: none;
-        }
-
-        .whatsapp-fab svg {
-            width: 28px;
-            height: 28px;
+        .check-svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            padding: 8px;
             color: #fff;
+            stroke-dasharray: 24;
+            stroke-dashoffset: 24;
+            transition: stroke-dashoffset 0.4s ease;
         }
 
-        @keyframes fabBounce {
+        .doc-dl-icon.checked .check-svg {
+            stroke-dashoffset: 0;
+        }
 
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-6px);
-            }
+        .doc-dl-icon.checked .dl-svg {
+            opacity: 0;
         }
 
         /* ═══════════════════════════════════════════
@@ -1087,6 +1130,8 @@
             <img src="assets/nss.jpg" alt="NSS Logo" class="loader-logo" />
         </div>
         <div class="loader-text">NSS CRCE</div>
+        <div class="loader-motto">Not Me, But You</div>
+        <div class="loader-pct" id="loader-pct">0%</div>
     </div>
 
     <!-- ═══════ PARTICLES ═══════ -->
@@ -1104,10 +1149,10 @@
     <!-- ═══════ MARQUEE ═══════ -->
     <div class="marquee-bar">
         <div class="marquee-inner">
-            <span>🏕️ Camp Starts: 15 March 2026 · Register Now!</span>
-            <span>🏕️ Camp Starts: 15 March 2026 · Register Now!</span>
-            <span>🏕️ Camp Starts: 15 March 2026 · Register Now!</span>
-            <span>🏕️ Camp Starts: 15 March 2026 · Register Now!</span>
+            <span>🏕️ Camp: 15–21 March 2026 · NSS CRCE Special Camp · Register Now! 🏕️</span>
+            <span>🏕️ Camp: 15–21 March 2026 · NSS CRCE Special Camp · Register Now! 🏕️</span>
+            <span>🏕️ Camp: 15–21 March 2026 · NSS CRCE Special Camp · Register Now! 🏕️</span>
+            <span>🏕️ Camp: 15–21 March 2026 · NSS CRCE Special Camp · Register Now! 🏕️</span>
         </div>
     </div>
 
@@ -1207,12 +1252,16 @@
                         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
                     </svg>
                 </div>
-                <div class="doc-info"><span>Rule Book</span><small>PDF Document</small></div>
+                <div class="doc-info"><span>Rule Book</span><small>PDF Document · 2.4 MB</small></div>
                 <div class="doc-dl-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                        stroke-linejoin="round">
+                    <svg class="dl-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <line x1="12" y1="5" x2="12" y2="19" />
                         <polyline points="19 12 12 19 5 12" />
+                    </svg>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
                     </svg>
                 </div>
             </a>
@@ -1224,12 +1273,16 @@
                         <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
                     </svg>
                 </div>
-                <div class="doc-info"><span>Packing List</span><small>PDF Document</small></div>
+                <div class="doc-info"><span>Packing List</span><small>PDF Document · 1.1 MB</small></div>
                 <div class="doc-dl-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                        stroke-linejoin="round">
+                    <svg class="dl-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <line x1="12" y1="5" x2="12" y2="19" />
                         <polyline points="19 12 12 19 5 12" />
+                    </svg>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
                     </svg>
                 </div>
             </a>
@@ -1243,12 +1296,16 @@
                         <line x1="16" y1="17" x2="8" y2="17" />
                     </svg>
                 </div>
-                <div class="doc-info"><span>Consent Form</span><small>PDF Document</small></div>
+                <div class="doc-info"><span>Consent Form</span><small>PDF Document · 0.8 MB</small></div>
                 <div class="doc-dl-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                        stroke-linejoin="round">
+                    <svg class="dl-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <line x1="12" y1="5" x2="12" y2="19" />
                         <polyline points="19 12 12 19 5 12" />
+                    </svg>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
                     </svg>
                 </div>
             </a>
@@ -1284,14 +1341,7 @@
         <p class="footer-heart">Made with ❤️ for NSS Volunteers</p>
     </footer>
 
-    <!-- ═══════ STICKY WHATSAPP FAB ═══════ -->
-    <a href="https://wa.me/9820251507" target="_blank" rel="noopener" class="whatsapp-fab"
-        aria-label="Chat on WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-        </svg>
-    </a>
+
 
     <script>
         (function () {
@@ -1299,6 +1349,17 @@
 
             /* ═══════ LOADER ═══════ */
             window.addEventListener('load', function () {
+                var pct = document.getElementById('loader-pct');
+                var count = 0;
+                var duration = 3800; // slightly less than 4s total to finish before fade
+                var interval = 38;
+                var steps = duration / interval;
+                var timer = setInterval(function () {
+                    count++;
+                    if (count <= 100) pct.textContent = count + '%';
+                    else clearInterval(timer);
+                }, interval);
+
                 setTimeout(function () {
                     document.getElementById('loader').classList.add('hidden');
                 }, 4000);
@@ -1396,11 +1457,18 @@
                 });
             });
 
-            /* ═══════ RIPPLE ═══════ */
+            /* ═══════ RIPPLE & DOWNLOAD CHECK ═══════ */
             var rippleTgts = document.querySelectorAll('.doc-card,.social-card');
             rippleTgts.forEach(function (el) {
                 el.style.position = 'relative'; el.style.overflow = 'hidden';
                 el.addEventListener('click', function (e) {
+                    // Check toggle for docs
+                    if (el.classList.contains('doc-card')) {
+                        var icon = el.querySelector('.doc-dl-icon');
+                        icon.classList.add('checked');
+                        setTimeout(function () { icon.classList.remove('checked'); }, 2000);
+                    }
+
                     var r = el.getBoundingClientRect();
                     var sz = Math.max(r.width, r.height);
                     var rp = document.createElement('span');
