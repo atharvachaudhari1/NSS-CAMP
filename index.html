@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="description"
         content="NSS Special Camp 2026 — 15 March to 21 March. Join the NSS CRCE Council for a week of service, skill-building, and cultural celebration." />
-    <meta name="theme-color" content="#1b1b1b" />
+    <meta name="theme-color" content="#0f766e" />
     <title>NSS Special Camp 2026 | CRCE</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -15,26 +15,33 @@
 
     <style>
         /* ═══════════════════════════════════════════
-   CSS VARIABLES
+   CSS VARIABLES – Fresh palette
    ═══════════════════════════════════════════ */
         :root {
-            --green: #2e7d32;
-            --green-light: #43a047;
-            --green-glow: rgba(46, 125, 50, 0.55);
-            --green-soft: rgba(46, 125, 50, 0.15);
-            --amber: #f57f17;
-            --amber-light: #ffb300;
-            --amber-glow: rgba(245, 127, 23, 0.5);
-            --amber-soft: rgba(245, 127, 23, 0.12);
-            --bg: #1b1b1b;
-            --bg-deep: #141414;
-            --bg-card: rgba(255, 255, 255, 0.06);
-            --bg-card-hover: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-border-hover: rgba(255, 255, 255, 0.16);
-            --text: #fff8f0;
-            --text-dim: rgba(255, 248, 240, 0.5);
-            --text-bright: #ffffff;
+            --primary: #0d9488;
+            --primary-light: #14b8a6;
+            --primary-glow: rgba(13, 148, 136, 0.4);
+            --primary-soft: rgba(13, 148, 136, 0.12);
+            --accent: #0f766e;
+            --accent-warm: #ea580c;
+            --accent-warm-soft: rgba(234, 88, 12, 0.12);
+            --green: #0d9488;
+            --green-light: #14b8a6;
+            --green-glow: rgba(13, 148, 136, 0.4);
+            --green-soft: rgba(13, 148, 136, 0.12);
+            --amber: #ea580c;
+            --amber-light: #f97316;
+            --amber-glow: rgba(234, 88, 12, 0.35);
+            --amber-soft: rgba(234, 88, 12, 0.1);
+            --bg: #f0fdfa;
+            --bg-deep: #ccfbf1;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f0fdfa;
+            --glass-border: rgba(13, 148, 136, 0.18);
+            --glass-border-hover: rgba(13, 148, 136, 0.3);
+            --text: #134e4a;
+            --text-dim: #64748b;
+            --text-bright: #0f766e;
             --radius: 16px;
             --transition: 0.4s ease-in-out;
         }
@@ -165,15 +172,15 @@
         }
 
         .loader-ring .ring-bg {
-            stroke: rgba(255, 255, 255, 0.06);
+            stroke: rgba(13, 148, 136, 0.15);
         }
 
         .loader-ring .ring-progress {
-            stroke: var(--green-light);
+            stroke: var(--primary-light);
             stroke-dasharray: 345;
             stroke-dashoffset: 345;
             animation: drawRing 3.2s ease-out 0.5s forwards;
-            filter: drop-shadow(0 0 6px var(--green-glow));
+            filter: drop-shadow(0 0 6px var(--primary-glow));
         }
 
         @keyframes drawRing {
@@ -191,7 +198,7 @@
             color: var(--text);
             overflow: hidden;
             white-space: nowrap;
-            border-right: 2px solid var(--green-light);
+            border-right: 2px solid var(--primary);
             width: 0;
             animation: typeOut 1.2s steps(8) 0.8s forwards, blinkCaret 0.6s step-end infinite;
         }
@@ -217,7 +224,7 @@
             margin-top: 16px;
             font-size: 14px;
             font-weight: 700;
-            color: var(--green-light);
+            color: var(--primary);
             font-family: monospace;
         }
 
@@ -361,7 +368,7 @@
    MARQUEE
    ═══════════════════════════════════════════ */
         .marquee-bar {
-            background: var(--green);
+            background: linear-gradient(90deg, var(--primary), var(--accent));
             overflow: hidden;
             white-space: nowrap;
             padding: 10px 0;
@@ -370,7 +377,7 @@
             left: 0;
             right: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 10px rgba(13, 148, 136, 0.25);
         }
 
         .marquee-inner {
@@ -380,7 +387,7 @@
             font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: var(--text-bright);
+            color: #fff;
         }
 
         .marquee-inner span {
@@ -415,9 +422,9 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse at 50% 20%, var(--green-soft) 0%, transparent 50%),
-                radial-gradient(ellipse at 30% 80%, var(--amber-soft) 0%, transparent 50%),
-                linear-gradient(180deg, #1b1b1b 0%, #151510 50%, #1b1b1b 100%);
+                radial-gradient(ellipse at 50% 20%, var(--primary-soft) 0%, transparent 55%),
+                radial-gradient(ellipse at 70% 75%, var(--amber-soft) 0%, transparent 50%),
+                linear-gradient(180deg, #f0fdfa 0%, #e0f2fe 40%, #f0fdfa 100%);
             z-index: 0;
         }
 
@@ -425,10 +432,10 @@
             position: absolute;
             inset: 0;
             z-index: 1;
-            opacity: 0.035;
+            opacity: 0.04;
             background-image:
-                linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+                linear-gradient(rgba(13, 148, 136, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(13, 148, 136, 0.08) 1px, transparent 1px);
             background-size: 42px 42px;
             animation: meshDrift 22s linear infinite;
             will-change: transform;
@@ -476,7 +483,7 @@
             inset: -6px;
             border-radius: 50%;
             border: 2px solid transparent;
-            background: conic-gradient(from 0deg, var(--green), var(--amber), var(--green-light), var(--green)) border-box;
+            background: conic-gradient(from 0deg, var(--primary), var(--accent-warm), var(--primary-light), var(--primary)) border-box;
             -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
             mask-composite: exclude;
@@ -488,7 +495,7 @@
             position: absolute;
             inset: -18px;
             border-radius: 50%;
-            background: radial-gradient(circle, var(--green-glow), transparent 70%);
+            background: radial-gradient(circle, var(--primary-glow), transparent 70%);
             animation: glowPulse 2.8s ease-in-out infinite;
             z-index: -1;
         }
@@ -533,13 +540,13 @@
 
         .hero-title span {
             display: inline-block;
-            background: linear-gradient(135deg, var(--green-light), var(--amber));
+            background: linear-gradient(135deg, var(--primary-light), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-size: 38px;
             font-weight: 900;
-            filter: drop-shadow(0 0 14px var(--green-glow));
+            filter: drop-shadow(0 0 14px var(--primary-glow));
         }
 
         .hero-dates {
@@ -559,8 +566,6 @@
 
         .countdown-block {
             background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--glass-border);
             border-radius: 14px;
             padding: 14px 4px 10px;
@@ -571,7 +576,7 @@
             gap: 6px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 20px rgba(13, 148, 136, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
         }
 
         .countdown-block::after {
@@ -581,15 +586,15 @@
             right: 6px;
             top: 50%;
             height: 1px;
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(13, 148, 136, 0.12);
         }
 
         .countdown-value {
             font-size: 30px;
             font-weight: 900;
             line-height: 1;
-            color: var(--green-light);
-            text-shadow: 0 0 18px var(--green-glow);
+            color: var(--primary);
+            text-shadow: 0 0 18px var(--primary-glow);
             display: inline-block;
             perspective: 400px;
             transition: transform 0.1s;
@@ -640,7 +645,7 @@
         .section-title {
             font-size: 22px;
             font-weight: 800;
-            color: var(--text-bright);
+            color: var(--text);
             text-align: center;
             margin-bottom: 32px;
             position: relative;
@@ -651,10 +656,10 @@
             display: block;
             width: 50px;
             height: 3px;
-            background: linear-gradient(90deg, var(--green-light), var(--amber));
+            background: linear-gradient(90deg, var(--primary-light), var(--accent-warm));
             border-radius: 2px;
             margin: 12px auto 0;
-            box-shadow: 0 0 10px var(--green-glow);
+            box-shadow: 0 0 10px var(--primary-glow);
         }
 
         /* ═══════════════════════════════════════════
@@ -683,10 +688,10 @@
             top: 0;
             width: 3px;
             height: 0%;
-            background: linear-gradient(180deg, var(--green-light), var(--green), var(--amber));
+            background: linear-gradient(180deg, var(--primary-light), var(--primary), var(--accent-warm));
             border-radius: 2px;
             transition: height 0.8s ease-out;
-            box-shadow: 0 0 8px var(--green-glow);
+            box-shadow: 0 0 8px var(--primary-glow);
         }
 
         /* Dot on the line */
@@ -698,19 +703,17 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: var(--green-light);
-            box-shadow: 0 0 10px var(--green-glow);
+            background: var(--primary-light);
+            box-shadow: 0 0 10px var(--primary-glow);
             z-index: 3;
         }
 
         .timeline-card {
             background: var(--bg-card);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
             border: 1px solid var(--glass-border);
             border-radius: var(--radius);
             padding: 22px 18px 22px 22px;
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 24px rgba(13, 148, 136, 0.1);
             position: relative;
             overflow: hidden;
             perspective: 1000px;
@@ -730,7 +733,7 @@
         }
 
         .timeline-card:active {
-            box-shadow: 0 8px 32px rgba(46, 125, 50, 0.18);
+            box-shadow: 0 8px 32px rgba(13, 148, 136, 0.2);
             border-color: var(--glass-border-hover);
         }
 
@@ -743,27 +746,27 @@
             font-size: 72px;
             font-weight: 900;
             line-height: 1;
-            color: rgba(46, 125, 50, 0.07);
+            color: rgba(13, 148, 136, 0.08);
             pointer-events: none;
             z-index: 0;
         }
 
         .timeline-day-badge {
             display: inline-block;
-            background: linear-gradient(135deg, var(--green), var(--green-light));
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             color: #fff;
             font-size: 11px;
             font-weight: 700;
             padding: 5px 14px;
             border-radius: 20px;
             margin-bottom: 12px;
-            box-shadow: 0 2px 10px var(--green-glow);
+            box-shadow: 0 2px 10px var(--primary-glow);
         }
 
         .timeline-card h3 {
             font-size: 18px;
             font-weight: 700;
-            color: var(--text-bright);
+            color: var(--text);
             margin-bottom: 8px;
             position: relative;
             z-index: 1;
@@ -792,11 +795,9 @@
             gap: 16px;
             padding: 18px 20px;
             background: var(--bg-card);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--glass-border);
             border-radius: var(--radius);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(13, 148, 136, 0.08);
             transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
             will-change: transform;
             position: relative;
@@ -805,7 +806,7 @@
 
         .doc-card:active {
             transform: translateY(-2px) scale(0.98);
-            box-shadow: 0 6px 24px rgba(46, 125, 50, 0.15);
+            box-shadow: 0 6px 24px rgba(13, 148, 136, 0.18);
             border-color: var(--glass-border-hover);
         }
 
@@ -840,7 +841,7 @@
             width: 44px;
             height: 44px;
             border-radius: 12px;
-            background: linear-gradient(135deg, var(--green-soft), rgba(46, 125, 50, 0.08));
+            background: linear-gradient(135deg, var(--primary-soft), rgba(13, 148, 136, 0.08));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -849,8 +850,8 @@
         .doc-icon-wrap svg {
             width: 22px;
             height: 22px;
-            color: var(--green-light);
-            filter: drop-shadow(0 0 4px var(--green-glow));
+            color: var(--primary);
+            filter: drop-shadow(0 0 4px var(--primary-glow));
         }
 
         .doc-info {
@@ -861,7 +862,7 @@
             display: block;
             font-size: 15px;
             font-weight: 600;
-            color: var(--text-bright);
+            color: var(--text);
         }
 
         .doc-info small {
@@ -874,11 +875,11 @@
             width: 36px;
             height: 36px;
             border-radius: 50%;
-            background: var(--green);
+            background: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 12px var(--green-glow);
+            box-shadow: 0 2px 12px var(--primary-glow);
             transition: transform 0.3s ease;
         }
 
@@ -890,6 +891,16 @@
             width: 16px;
             height: 16px;
             color: #fff;
+        }
+
+        .doc-dl-icon-view svg {
+            width: 18px;
+            height: 18px;
+            color: #fff;
+        }
+
+        .doc-icon-wrap-image svg {
+            color: var(--primary);
         }
 
         /* ═══════════════════════════════════════════
@@ -910,7 +921,7 @@
             border-radius: var(--radius);
             font-size: 16px;
             font-weight: 700;
-            color: var(--text-bright);
+            color: #fff;
             position: relative;
             overflow: hidden;
             transition: transform var(--transition), box-shadow var(--transition);
@@ -990,20 +1001,20 @@
             content: '';
             position: absolute;
             inset: 0;
-            opacity: 0.03;
+            opacity: 0.04;
             pointer-events: none;
             background-image:
-                linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+                linear-gradient(rgba(13, 148, 136, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(13, 148, 136, 0.08) 1px, transparent 1px);
             background-size: 30px 30px;
         }
 
         .footer-divider {
             width: 80px;
             height: 2px;
-            background: linear-gradient(90deg, transparent, var(--green-light), transparent);
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
             margin: 0 auto 20px;
-            box-shadow: 0 0 10px var(--green-glow);
+            box-shadow: 0 0 10px var(--primary-glow);
         }
 
         .footer p {
@@ -1022,7 +1033,7 @@
    DOCS CHECKMARK
    ═══════════════════════════════════════════ */
         .doc-dl-icon.checked {
-            background: var(--green-light);
+            background: var(--primary-light);
             transform: scale(1.1);
         }
 
@@ -1244,6 +1255,29 @@
     <section id="documents" class="section">
         <h2 class="section-title">Important Documents</h2>
         <div class="docs-grid">
+            <a href="assets/NSS CAMP ITINERARY.pdf" download class="doc-card reveal">
+                <div class="doc-icon-wrap">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                        <line x1="16" y1="2" x2="16" y2="6" />
+                        <line x1="8" y1="2" x2="8" y2="6" />
+                        <line x1="3" y1="10" x2="21" y2="10" />
+                    </svg>
+                </div>
+                <div class="doc-info"><span>Itinerary</span><small>PDF Document</small></div>
+                <div class="doc-dl-icon">
+                    <svg class="dl-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <polyline points="19 12 12 19 5 12" />
+                    </svg>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                </div>
+            </a>
             <a href="assets/rulebook.pdf" download class="doc-card reveal">
                 <div class="doc-icon-wrap">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -1265,24 +1299,22 @@
                     </svg>
                 </div>
             </a>
-            <a href="assets/packing-list.pdf" download class="doc-card reveal">
-                <div class="doc-icon-wrap">
+            <a href="assets/NSS CAMP Things to Carry.png" target="_blank" rel="noopener" class="doc-card doc-card-image reveal" title="View things to carry">
+                <div class="doc-icon-wrap doc-icon-wrap-image">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
-                        <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2" />
-                        <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                        <circle cx="8.5" cy="8.5" r="1.5" />
+                        <polyline points="21 15 16 10 5 21" />
                     </svg>
                 </div>
-                <div class="doc-info"><span>Packing List</span><small>PDF Document · 1.1 MB</small></div>
-                <div class="doc-dl-icon">
-                    <svg class="dl-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                <div class="doc-info"><span>Things to Carry</span><small>Image · NSS CAMP Things to Carry</small></div>
+                <div class="doc-dl-icon doc-dl-icon-view">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="12" y1="5" x2="12" y2="19" />
-                        <polyline points="19 12 12 19 5 12" />
-                    </svg>
-                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12" />
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" y1="14" x2="21" y2="3" />
                     </svg>
                 </div>
             </a>
