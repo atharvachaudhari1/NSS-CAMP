@@ -15,12 +15,12 @@
 
     <style>
         /* ═══════════════════════════════════════════
-   CSS VARIABLES – High-Energy Bold
+   CSS VARIABLES – NSS Clean & Basic
    ═══════════════════════════════════════════ */
         :root {
             --yellow: #C9A227;
-            --cyan: #00CED1;
-            --pink: #FF69B4;
+            --cyan: #0066b3;
+            --pink: #c41e3a;
             --black: #000000;
             --yellow-dark: #a8841f;
             --cyan-dark: #00b4b7;
@@ -115,33 +115,6 @@
             animation: loaderReveal 1s ease-out 0.3s both;
             z-index: 2;
             position: relative;
-            animation: loaderReveal 1s ease-out 0.3s both, heartBeat 1.2s ease-in-out infinite 1s;
-        }
-
-        @keyframes heartBeat {
-            0% {
-                transform: scale(1);
-            }
-
-            15% {
-                transform: scale(1.06);
-            }
-
-            30% {
-                transform: scale(1);
-            }
-
-            45% {
-                transform: scale(1.06);
-            }
-
-            60% {
-                transform: scale(1);
-            }
-
-            100% {
-                transform: scale(1);
-            }
         }
 
         @keyframes loaderReveal {
@@ -254,6 +227,10 @@
             opacity: 0;
             will-change: transform, opacity;
             animation: floatP linear infinite;
+        }
+
+        .particle {
+            display: none;
         }
 
         .particle:nth-child(odd) {
@@ -420,19 +397,11 @@
             position: absolute;
             inset: 0;
             z-index: 1;
-            opacity: 0.06;
+            opacity: 0.04;
             background-image:
                 linear-gradient(var(--black) 1px, transparent 1px),
                 linear-gradient(90deg, var(--black) 1px, transparent 1px);
             background-size: 32px 32px;
-            animation: meshDrift 22s linear infinite;
-            will-change: transform;
-        }
-
-        @keyframes meshDrift {
-            to {
-                transform: translate(42px, 42px);
-            }
         }
 
         .hero-content {
@@ -470,8 +439,7 @@
             position: absolute;
             inset: -6px;
             border-radius: 0;
-            border: 4px solid var(--black);
-            box-shadow: 4px 4px 0 var(--cyan), -2px -2px 0 var(--pink);
+            border: 3px solid var(--black);
         }
 
         .logo-glow {
@@ -516,25 +484,19 @@
             letter-spacing: 3px;
             margin-bottom: 8px;
             text-transform: uppercase;
-            text-shadow: 4px 4px 0 var(--black), 2px 2px 0 #fff, 6px 6px 0 rgba(0,0,0,0.3);
+            color: var(--black);
         }
 
         .hero-title .split-cyan {
             color: var(--cyan);
-            -webkit-text-stroke: 3px var(--black);
-            paint-order: stroke fill;
         }
 
         .hero-title .split-pink {
             color: var(--pink);
-            -webkit-text-stroke: 3px var(--black);
-            paint-order: stroke fill;
         }
 
         .hero-title .split-yellow {
-            color: var(--yellow);
-            -webkit-text-stroke: 3px var(--black);
-            paint-order: stroke fill;
+            color: #a8841f;
         }
 
         .hero-dates {
@@ -567,15 +529,14 @@
 
         .hero-search {
             width: 100%;
-            padding: 16px 20px 16px 48px;
-            border: 4px solid var(--black);
+            padding: 14px 20px 14px 48px;
+            border: 2px solid var(--black);
             background: #2d2d2d;
             font-family: 'Oswald', sans-serif;
             font-size: 14px;
             font-weight: 600;
             color: #fff;
-            box-shadow: 6px 6px 0 var(--black);
-            transition: box-shadow var(--transition), transform var(--transition);
+            transition: border-color var(--transition), box-shadow var(--transition);
         }
 
         .hero-search::placeholder {
@@ -586,7 +547,7 @@
 
         .hero-search:focus {
             outline: none;
-            box-shadow: 4px 4px 0 var(--black);
+            border-color: var(--black);
         }
 
         /* Hero action buttons */
@@ -602,49 +563,43 @@
         .hero-btn {
             display: block;
             width: 100%;
-            padding: 18px 24px;
-            border: 4px solid var(--black);
+            padding: 16px 24px;
+            border: 2px solid var(--black);
             font-family: 'Oswald', sans-serif;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: transform var(--transition), box-shadow var(--transition);
+            transition: transform var(--transition), border-color var(--transition);
             cursor: pointer;
         }
 
         .hero-btn-pink {
             background: var(--pink);
             color: #fff;
-            box-shadow: 6px 6px 0 var(--black);
         }
 
         .hero-btn-pink:hover, .hero-btn-pink:active {
-            transform: translate(3px, 3px);
-            box-shadow: 3px 3px 0 var(--black);
+            transform: translateY(-1px);
         }
 
         .hero-btn-white {
             background: #fff;
             color: var(--black);
-            box-shadow: 6px 6px 0 var(--black);
         }
 
         .hero-btn-white:hover, .hero-btn-white:active {
-            transform: translate(3px, 3px);
-            box-shadow: 3px 3px 0 var(--black);
+            transform: translateY(-1px);
         }
 
         .hero-btn-cyan {
             background: var(--cyan);
-            color: var(--black);
-            box-shadow: 6px 6px 0 var(--black);
+            color: #fff;
         }
 
         .hero-btn-cyan:hover, .hero-btn-cyan:active {
-            transform: translate(3px, 3px);
-            box-shadow: 3px 3px 0 var(--black);
+            transform: translateY(-1px);
         }
 
         /* ─── FLIP COUNTDOWN ─── */
@@ -656,22 +611,16 @@
 
         .countdown-block {
             background: #fff;
-            border: 3px solid var(--black);
+            border: 2px solid var(--black);
             border-radius: 0;
-            padding: 14px 6px 10px;
+            padding: 12px 6px 8px;
             min-width: 68px;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 4px;
             position: relative;
-            box-shadow: 5px 5px 0 var(--black);
-            transition: transform var(--transition), box-shadow var(--transition);
-        }
-
-        .countdown-block:active {
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0 var(--black);
+            transition: border-color var(--transition);
         }
 
         .countdown-block::after {
@@ -690,7 +639,6 @@
             font-weight: 400;
             line-height: 1;
             color: var(--black);
-            text-shadow: 2px 2px 0 var(--cyan);
             display: inline-block;
             perspective: 400px;
             transition: transform 0.1s;
@@ -748,7 +696,6 @@
             position: relative;
             text-transform: uppercase;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 0 var(--cyan);
         }
 
         .section-title::after {
@@ -760,56 +707,47 @@
             margin: 12px auto 0;
         }
 
-        /* Large section header button (Reference: THE LEADERBOARD style) */
+        /* Large section header button */
         .section-hero-btn {
             display: block;
             position: relative;
             width: 100%;
-            padding: 24px 20px;
-            background: var(--pink);
-            border: 4px solid var(--black);
-            box-shadow: 8px 8px 0 var(--black);
+            padding: 20px 20px;
+            background: var(--black);
+            border: 2px solid var(--black);
             text-align: center;
             margin-bottom: 24px;
             overflow: visible;
-            transition: transform var(--transition), box-shadow var(--transition);
+            transition: transform var(--transition);
         }
 
         .section-hero-btn:hover {
-            transform: translate(-3px, -3px);
-            box-shadow: 11px 11px 0 var(--black);
-        }
-
-        .section-hero-btn:active {
-            transform: translate(3px, 3px);
-            box-shadow: 4px 4px 0 var(--black);
+            transform: translateY(-1px);
         }
 
         .section-hero-btn-text {
             display: block;
             font-family: 'Bebas Neue', 'Oswald', sans-serif;
-            font-size: 32px;
+            font-size: 26px;
             font-weight: 400;
             color: #fff;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 0 var(--black);
+            letter-spacing: 2px;
         }
 
         .section-hero-btn-tag {
             position: absolute;
-            right: -8px;
-            bottom: -8px;
-            padding: 6px 12px;
-            background: var(--cyan);
+            right: 8px;
+            bottom: 50%;
+            transform: translateY(50%);
+            padding: 4px 10px;
+            background: var(--yellow);
             border: 2px solid var(--black);
             font-size: 10px;
             font-weight: 700;
             color: var(--black);
             text-transform: uppercase;
             letter-spacing: 1px;
-            transform: rotate(-3deg);
-            box-shadow: 3px 3px 0 var(--black);
         }
 
         .section-hero-btn-cyan {
@@ -817,130 +755,11 @@
         }
 
         .section-hero-btn-cyan .section-hero-btn-text {
-            color: var(--black);
-            text-shadow: 2px 2px 0 rgba(255,255,255,0.5);
+            color: #fff;
         }
 
         .section-hero-btn-black {
             background: var(--black);
-        }
-
-        /* ═══════════════════════════════════════════
-   TIMELINE – VERTICAL 3D FLIP
-   ═══════════════════════════════════════════ */
-        .timeline-section {
-            padding-bottom: 20px;
-        }
-
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-            position: relative;
-            padding-left: 32px;
-        }
-
-        /* Animated vertical connecting line */
-        .timeline-line {
-            position: absolute;
-            left: 10px;
-            top: 0;
-            width: 4px;
-            height: 0%;
-            background: var(--black);
-            transition: height 0.8s ease-out;
-        }
-
-        /* Dot on the line */
-        .timeline-card::before {
-            content: '';
-            position: absolute;
-            left: -26px;
-            top: 26px;
-            width: 12px;
-            height: 12px;
-            border-radius: 0;
-            background: var(--cyan);
-            border: 2px solid var(--black);
-            z-index: 3;
-        }
-
-        .timeline-card {
-            background: #fff;
-            border: 3px solid var(--black);
-            border-radius: 0;
-            padding: 20px 18px 20px 22px;
-            box-shadow: 6px 6px 0 var(--black);
-            position: relative;
-            overflow: hidden;
-            perspective: 1000px;
-            transform: rotateX(90deg);
-            transform-origin: top center;
-            opacity: 0;
-            transition: transform 0.7s cubic-bezier(.4, 0, .2, 1),
-                opacity 0.7s ease,
-                transform 0.2s ease,
-                box-shadow 0.2s ease;
-            will-change: transform, opacity;
-        }
-
-        .timeline-card.flipped-in {
-            transform: rotateX(0deg);
-            opacity: 1;
-        }
-
-        .timeline-card:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 8px 8px 0 var(--black);
-        }
-
-        .timeline-card:active {
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0 var(--black);
-        }
-
-        /* Day watermark */
-        .timeline-card::after {
-            content: attr(data-day);
-            position: absolute;
-            right: 10px;
-            bottom: 2px;
-            font-size: 64px;
-            font-weight: 900;
-            line-height: 1;
-            color: rgba(0, 0, 0, 0.06);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .timeline-day-badge {
-            display: inline-block;
-            background: var(--black);
-            color: var(--yellow);
-            font-size: 11px;
-            font-weight: 700;
-            padding: 6px 14px;
-            border-radius: 0;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .timeline-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 8px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .timeline-card p {
-            font-size: 13px;
-            color: var(--text-dim);
-            line-height: 1.6;
-            position: relative;
-            z-index: 1;
         }
 
         /* ═══════════════════════════════════════════
@@ -956,25 +775,18 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            padding: 18px 20px;
+            padding: 16px 18px;
             background: #fff;
-            border: 3px solid var(--black);
+            border: 2px solid var(--black);
             border-radius: 0;
-            box-shadow: 6px 6px 0 var(--black);
-            transition: transform var(--transition), box-shadow var(--transition);
+            transition: transform var(--transition);
             will-change: transform;
             position: relative;
             overflow: hidden;
         }
 
         .doc-card:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 8px 8px 0 var(--black);
-        }
-
-        .doc-card:active {
-            transform: translate(2px, 2px) scale(0.98);
-            box-shadow: 2px 2px 0 var(--black);
+            transform: translateY(-1px);
         }
 
         .doc-icon-wrap {
@@ -1085,35 +897,21 @@
         /* Instagram */
         .social-card.instagram {
             background: var(--black);
-            border: 3px solid var(--black);
-            box-shadow: 6px 6px 0 var(--pink);
+            border: 2px solid var(--black);
         }
 
         .social-card.instagram:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 8px 8px 0 var(--pink);
-        }
-
-        .social-card.instagram:active {
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0 var(--pink);
+            transform: translateY(-1px);
         }
 
         /* WhatsApp */
         .social-card.whatsapp {
             background: var(--black);
-            border: 3px solid var(--black);
-            box-shadow: 6px 6px 0 var(--cyan);
+            border: 2px solid var(--black);
         }
 
         .social-card.whatsapp:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 8px 8px 0 var(--cyan);
-        }
-
-        .social-card.whatsapp:active {
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0 var(--cyan);
+            transform: translateY(-1px);
         }
 
         /* ═══════════════════════════════════════════
@@ -1301,7 +1099,7 @@
                 <div class="logo-ring"></div>
                 <img src="assets/nss.jpg" alt="NSS Logo" class="hero-logo" />
             </div>
-            <h1 class="hero-title"><span class="split-yellow">NSS</span> <span class="split-cyan">Special Camp</span><br /><span class="split-pink">2026</span></h1>
+            <h1 class="hero-title"><span class="split-cyan">NSS</span> <span class="split-cyan">Special Camp</span><br /><span class="split-pink">2026</span></h1>
             <p class="hero-dates">15 MARCH – 21 MARCH 2026</p>
             <div class="hero-search-wrap">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -1309,7 +1107,6 @@
             </div>
             <div class="hero-actions">
                 <a href="#documents" class="hero-btn hero-btn-pink">VIEW DOCUMENTS</a>
-                <a href="#timeline" class="hero-btn hero-btn-white">CAMP TIMELINE</a>
             </div>
             <div class="countdown" id="countdown">
                 <div class="countdown-block">
@@ -1328,59 +1125,6 @@
                     <span class="countdown-value" id="cd-seconds">00</span>
                     <span class="countdown-label">Seconds</span>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ═══════ TIMELINE ═══════ -->
-    <section id="timeline" class="section timeline-section">
-        <div class="section-hero-btn section-hero-btn-cyan">
-            <span class="section-hero-btn-text" style="color: var(--black);">CAMP TIMELINE</span>
-        </div>
-
-        <div class="timeline" id="timeline-wrap">
-            <div class="timeline-line" id="timeline-line"></div>
-
-            <div class="timeline-card" data-day="1">
-                <span class="timeline-day-badge">Day 1</span>
-                <h3>Orientation</h3>
-                <p>Ice-breaking activities, team assignments, and introduction to the camp objectives.</p>
-            </div>
-
-            <div class="timeline-card" data-day="2">
-                <span class="timeline-day-badge">Day 2</span>
-                <h3>Village Survey</h3>
-                <p>On-ground village survey to understand local needs, resources, and community demographics.</p>
-            </div>
-
-            <div class="timeline-card" data-day="3">
-                <span class="timeline-day-badge">Day 3</span>
-                <h3>Health Awareness</h3>
-                <p>Medical check-up drives, health &amp; hygiene awareness sessions for the community.</p>
-            </div>
-
-            <div class="timeline-card" data-day="4">
-                <span class="timeline-day-badge">Day 4</span>
-                <h3>Skill Workshop</h3>
-                <p>Hands-on workshops on practical skills — cooking, crafts, first aid, and more.</p>
-            </div>
-
-            <div class="timeline-card" data-day="5">
-                <span class="timeline-day-badge">Day 5</span>
-                <h3>Tree Plantation</h3>
-                <p>Environmental initiative with large-scale tree plantation and eco-awareness activities.</p>
-            </div>
-
-            <div class="timeline-card" data-day="6">
-                <span class="timeline-day-badge">Day 6</span>
-                <h3>Cultural Preparation</h3>
-                <p>Rehearsals and preparation for the closing ceremony — skits, songs, and performances.</p>
-            </div>
-
-            <div class="timeline-card" data-day="7">
-                <span class="timeline-day-badge">Day 7</span>
-                <h3>Closing Ceremony</h3>
-                <p>Grand cultural programme, felicitation, reflections, and farewell to the camp village.</p>
             </div>
         </div>
     </section>
@@ -1455,7 +1199,7 @@
                     </svg>
                 </div>
             </a>
-            <a href="assets/consent-form.pdf" download class="doc-card reveal">
+            <a href="assets/consent-form.docx" download class="doc-card reveal">
                 <div class="doc-icon-wrap">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -1465,7 +1209,7 @@
                         <line x1="16" y1="17" x2="8" y2="17" />
                     </svg>
                 </div>
-                <div class="doc-info"><span>Consent Form</span><small>PDF Document · 0.8 MB</small></div>
+                <div class="doc-info"><span>Consent Form</span><small>Word Document</small></div>
                 <div class="doc-dl-icon">
                     <svg class="dl-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -1574,31 +1318,6 @@
                 revealEls.forEach(function (el) { io.observe(el); });
             } else {
                 revealEls.forEach(function (el) { el.classList.add('visible'); });
-            }
-
-            /* ═══════ VERTICAL TIMELINE – 3D FLIP + PROGRESSIVE LINE ═══════ */
-            var tlCards = document.querySelectorAll('#timeline-wrap .timeline-card');
-            var tlLine = document.getElementById('timeline-line');
-            var tlWrap = document.getElementById('timeline-wrap');
-            var revealedCount = 0;
-
-            if ('IntersectionObserver' in window) {
-                var tlObs = new IntersectionObserver(function (entries) {
-                    entries.forEach(function (e) {
-                        if (e.isIntersecting) {
-                            e.target.classList.add('flipped-in');
-                            tlObs.unobserve(e.target);
-                            revealedCount++;
-                            // Grow line proportionally
-                            var pct = (revealedCount / tlCards.length) * 100;
-                            tlLine.style.height = pct + '%';
-                        }
-                    });
-                }, { threshold: 0.2 });
-                tlCards.forEach(function (c) { tlObs.observe(c); });
-            } else {
-                tlCards.forEach(function (c) { c.classList.add('flipped-in'); });
-                tlLine.style.height = '100%';
             }
 
             /* ═══════ 3D TILT – Doc cards ═══════ */
